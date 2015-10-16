@@ -1,12 +1,12 @@
 $(document).ready(function () {
-/*
     var backendDataUrl = '/scripts/reklamasjon/form.php?lang=' + currentLanguage;
     var formUrl = "/" + currentLanguage + "/corporate/contact_and_support/automotive/return_form/";
     var previewUrl = "/" + currentLanguage + "/corporate/contact_and_support/automotive/return_form_preview/";
-*/
+/*
     var backendDataUrl = '/form.php?lang=' + currentLanguage;
     var formUrl = "/default-return-form.html";
     var previewUrl = "/default-return-form-preview-site.html";
+*/
 
     var mathenticate = {
         bounds: {
@@ -176,6 +176,7 @@ $(document).ready(function () {
                     type:'POST',
                     success: function(data) {
                         if(data && data.new_id) {
+                            document.title = data.new_id;
                             $('#printInn').show();
                             $('#sendInn').hide();
                             $('#goBack').hide();
@@ -196,6 +197,7 @@ $(document).ready(function () {
             url: backendDataUrl + queryStr,
             dataType: "json",
             success: function(data) {
+                document.title = contactId;
                 if (data && data.name) {
                     var productContent = $('#products_container').html();
 

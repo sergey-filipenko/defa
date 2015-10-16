@@ -145,25 +145,25 @@ class Xml {
             <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="128"/>
             <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="131"/>
             <Row ss:AutoFitHeight="0" ss:StyleID="s66">
-                <Cell ss:StyleID="s69"><Data ss:Type="String">Kontaktinfo</Data></Cell>
-                <Cell ss:StyleID="s67"><Data ss:Type="String">Forhandlers navn</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Adresselinje 1</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Adresselinje 2</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Adresselinje 3</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Kontaktperson</Data></Cell>
-                <Cell ss:StyleID="s67"><Data ss:Type="String">Kontaktperson E-post</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Org nummer 9 siffer</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Telefonnummer Dagtid</Data></Cell>
+                <Cell ss:StyleID="s69"><Data ss:Type="String">Contact information</Data></Cell>
+                <Cell ss:StyleID="s67"><Data ss:Type="String">Client name</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Address line 1</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Address line 2</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Address line 3</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Contact person</Data></Cell>
+                <Cell ss:StyleID="s67"><Data ss:Type="String">Contact person e-mail</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Organization number</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Phone number</Data></Cell>
                 <Cell ss:StyleID="s67"/>
             </Row>
             {{contactTemplate}}
             <Row ss:Index="4" ss:AutoFitHeight="0" ss:StyleID="s66">
-                <Cell ss:StyleID="s69"><Data ss:Type="String">Kreditnota</Data></Cell>
-                <Cell ss:StyleID="s67"><Data ss:Type="String">E-post adresse ØK</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Ref nr</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Bankkontonummer</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Kompensasjon av frakt</Data></Cell>
-                <Cell ss:StyleID="s68"><Data ss:Type="String">Kommentar</Data></Cell>
+                <Cell ss:StyleID="s69"><Data ss:Type="String">Credit Note</Data></Cell>
+                <Cell ss:StyleID="s67"><Data ss:Type="String">E-mail-finance manager</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Reference number</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Bank account number</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Comments</Data></Cell>
+                <Cell ss:StyleID="s68"/>
                 <Cell ss:StyleID="s67"/>
                 <Cell ss:StyleID="s68"/>
                 <Cell ss:StyleID="s68"/>
@@ -217,24 +217,23 @@ EOS;
     <Cell ss:Index="2" ss:StyleID="s74"><Data ss:Type="String">{{ref_email}}</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">{{ref_num}}</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="Number">{{ref_banknum}}</Data></Cell>
-    <Cell><Data ss:Type="String">{{ref_shipping_comp}}</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">{{ref_comment}}</Data></Cell>
 </Row>
 EOS;
 
     static $productHeader = <<<EOS
 <Row ss:Index="{{rowIndex}}" ss:AutoFitHeight="0" ss:StyleID="s66">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Produkt {{id}}</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">DEFA Produktnr</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Erstatningsprodukt</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Salgsdato</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Bilmerke</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Årsmodell</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Product {{id}}</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">DEFA product number</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Replacement Product</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Date of sale</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Car Make</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Year</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Skiltnummer</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Navn på Eier</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Montert av</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Kommentar</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Number plate</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Name of owner</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Mounted by</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Comments</Data></Cell>
 </Row>
 EOS;
 
@@ -263,23 +262,14 @@ EOS;
             self::$contactTemplate
         );
 
-        if (isset($data['ref_shipping_comp']) && $data['ref_shipping_comp'] == 'on') {
-            $data['ref_shipping_comp'] = $data['ref_shipping_comp'] == 'on'?'Ja':'Nei';
-            $data['ref_banknum'] = isset($data['ref_banknum'])?$data['ref_banknum']:'';
-            $data['ref_comment'] = isset($data['ref_comment'])?$data['ref_comment']:'';
-            $creditData = str_replace(
-                array('{{ref_email}}', '{{ref_num}}', '{{ref_banknum}}', '{{ref_shipping_comp}}', '{{ref_comment}}'),
-                array($data['ref_email'], $data['ref_num'], $data['ref_banknum'], $data['ref_shipping_comp'], $data['ref_comment']),
-                self::$creditTemplate
-            );
-        } else {
-            $creditData = str_replace(
-                array('{{ref_email}}', '{{ref_num}}', '{{ref_banknum}}', '{{ref_shipping_comp}}', '{{ref_comment}}'),
-                '',
-                self::$creditTemplate
-            );
-
-        }
+        //$data['ref_shipping_comp'] = $data['ref_shipping_comp'] == 'on'?'Ja':'Nei';
+        $data['ref_banknum'] = isset($data['ref_banknum'])?$data['ref_banknum']:'';
+        $data['ref_comment'] = isset($data['ref_comment'])?$data['ref_comment']:'';
+        $creditData = str_replace(
+            array('{{ref_email}}', '{{ref_num}}', '{{ref_banknum}}', '{{ref_comment}}'),
+            array($data['ref_email'], $data['ref_num'], $data['ref_banknum'], $data['ref_comment']),
+            self::$creditTemplate
+        );
 
         $productData = '';
         $i = 1;
@@ -391,7 +381,7 @@ class Model {
             'refund' => isset($data['refund'])?1:0,
             'ref_email' => $data['ref_email'],
             'ref_num' => $data['ref_num'],
-            'ref_banknum' => isset($data['ref_banknum'])?$data['ref_banknum']:'',
+            'ref_banknum' => isset($data['ref_banknum']) && $data['ref_banknum']?$data['ref_banknum']:'',
             'ref_shipping_comp' => $data['ref_shipping_comp'],
             'ref_comment' => isset($data['ref_comment'])?$data['ref_comment']:'',
             'date_created' => date('Y-m-d h:i:s')
@@ -409,12 +399,13 @@ class Model {
                 if (!empty($product['defa_number'])) {
                     $products_data = array(
                         'contact_id' => $parentId,
+                        'defa_number' => isset($product['defa_number'])?$product['defa_number']:'',
                         'replacement' => isset($product['replacement'])?1:0,
                         'sale_date' => date('Y-m-d', strtotime($product['sale_date'])),
                         'manufacturer' => isset($product['manufacturer'])?$product['manufacturer']:'',
                         'year' => isset($product['year'])?$product['year']:'',
                         'type' => isset($product['type'])?$product['type']:'',
-                        'defa_number' => isset($product['defa_number'])?$product['defa_number']:'',
+                        'number' => isset($product['number'])?$product['number']:'',
                         'owner' => $product['owner'],
                         'mounted_by' => isset($product['mounted_by'])?$product['mounted_by']:'',
                         'comment' => $product['comment'],

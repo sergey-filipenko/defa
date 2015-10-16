@@ -1,8 +1,8 @@
 <?php
 
 define('DB_SERVER', 'localhost');
-define('DB_USER', 'reklamasjondc');
-define('DB_PASSWORD', 'MKv9vsEA82nR');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'reklamasjon');
 
 $emails = array(
