@@ -1,12 +1,12 @@
 $(document).ready(function () {
+/*
     var backendDataUrl = '/scripts/reklamasjon/form.php?lang=' + currentLanguage;
     var formUrl = "/" + currentLanguage + "/corporate/contact_and_support/automotive/return_form/";
     var previewUrl = "/" + currentLanguage + "/corporate/contact_and_support/automotive/return_form_preview/";
-/*
+*/
     var backendDataUrl = '/form.php?lang=' + currentLanguage;
     var formUrl = "/default-return-form.html";
     var previewUrl = "/default-return-form-preview-site.html";
-*/
 
     var mathenticate = {
         bounds: {
@@ -228,7 +228,7 @@ $(document).ready(function () {
                                 animSpeed: 400,
                                 effect: 'slide'
                             });
-                            if (product.replacement && product.replacement == 'on') {
+                            if (product.replacement && product.replacement == '1') {
                                 $('#productReplacement' + n).addClass('check');
                             }
                             $('#defaNumber' + n).text(product.defa_number);

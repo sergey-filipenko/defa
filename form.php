@@ -162,8 +162,8 @@ class Xml {
                 <Cell ss:StyleID="s67"><Data ss:Type="String">E-mail-finance manager</Data></Cell>
                 <Cell ss:StyleID="s68"><Data ss:Type="String">Reference number</Data></Cell>
                 <Cell ss:StyleID="s68"><Data ss:Type="String">Bank account number</Data></Cell>
+                <Cell ss:StyleID="s68"><Data ss:Type="String">Credit note</Data></Cell>
                 <Cell ss:StyleID="s68"><Data ss:Type="String">Comments</Data></Cell>
-                <Cell ss:StyleID="s68"/>
                 <Cell ss:StyleID="s67"/>
                 <Cell ss:StyleID="s68"/>
                 <Cell ss:StyleID="s68"/>
@@ -216,7 +216,8 @@ EOS;
 <Row ss:AutoFitHeight="0">
     <Cell ss:Index="2" ss:StyleID="s74"><Data ss:Type="String">{{ref_email}}</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">{{ref_num}}</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="Number">{{ref_banknum}}</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">{{ref_banknum}}</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">{{ref_credit}}</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">{{ref_comment}}</Data></Cell>
 </Row>
 EOS;
@@ -225,7 +226,7 @@ EOS;
 <Row ss:Index="{{rowIndex}}" ss:AutoFitHeight="0" ss:StyleID="s66">
     <Cell ss:StyleID="s69"><Data ss:Type="String">Product {{id}}</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">DEFA product number</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Replacement Product</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Mounted in vehicle</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Date of sale</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Car Make</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Year</Data></Cell>
@@ -262,12 +263,12 @@ EOS;
             self::$contactTemplate
         );
 
-        //$data['ref_shipping_comp'] = $data['ref_shipping_comp'] == 'on'?'Ja':'Nei';
+        $data['ref_shipping_comp'] = $data['ref_shipping_comp'] == 'on'?'Yes':'No';
         $data['ref_banknum'] = isset($data['ref_banknum'])?$data['ref_banknum']:'';
         $data['ref_comment'] = isset($data['ref_comment'])?$data['ref_comment']:'';
         $creditData = str_replace(
-            array('{{ref_email}}', '{{ref_num}}', '{{ref_banknum}}', '{{ref_comment}}'),
-            array($data['ref_email'], $data['ref_num'], $data['ref_banknum'], $data['ref_comment']),
+            array('{{ref_email}}', '{{ref_num}}', '{{ref_banknum}}', '{{ref_credit}}', '{{ref_comment}}'),
+            array($data['ref_email'], $data['ref_num'], $data['ref_banknum'], $data['ref_shipping_comp'], $data['ref_comment']),
             self::$creditTemplate
         );
 
